@@ -6,7 +6,9 @@ namespace MichiTheDev
    {
       public static GameManager Instance { private set; get; }
 
-      [SerializeField] private AudioClipInfo _mainThemeInfo;
+      [SerializeField] private AudioClipInfo _mainTheme;
+      
+      private AudioSourceObject _audioSourceObject;
       
       private void Awake()
       {
@@ -17,11 +19,9 @@ namespace MichiTheDev
          }
          Instance = this;
          DontDestroyOnLoad(gameObject);
-      }
 
-      private void Start()
-      {
-         AudioManager.Play(_mainThemeInfo);
+         _audioSourceObject = new GameObject("Music [Audio]").AddComponent<AudioSourceObject>();
+         _audioSourceObject.Play(_mainTheme);
       }
    }
 }

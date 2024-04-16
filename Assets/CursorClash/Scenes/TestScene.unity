@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cursorSprite: {fileID: 21300000, guid: eea7ff564013ff2439cfc0259a533771, type: 3}
-  _hitRange: 0.15
+  _hitRange: 0.175
 --- !u!1 &785542790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,10 +1093,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067d8de38431420a9de59d98b6488b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainThemeInfo:
-    Name: MainTheme
-    Category: Music
-    Volume: 0.33
+  _mainTheme:
+    AudioClip: {fileID: 8300000, guid: 6afaa4e321499b840bd3893559df9d74, type: 3}
+    AudioMixerGroup: {fileID: -7833504671084778602, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
+    Volume: 0.15
     Pitch: 1
     Loop: 1
 --- !u!1001 &1992158193

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CartoonFX;
 using UnityEngine;
 
 namespace MichiTheDev
@@ -18,9 +19,10 @@ namespace MichiTheDev
             DontDestroyOnLoad(gameObject);
         }
 
-        public static void SpawnParticle(string name, Vector2 location, bool destroy = true)
+        public static void SpawnParticle(string name, Vector3 location, CFXR_Effect.ClearBehavior clearBehavior = CFXR_Effect.ClearBehavior.Destroy)
         {
-            Instantiate(_particles[name], location, Quaternion.identity);
+            ParticleSystem particleSystem = Instantiate(_particles[name], location, Quaternion.identity);
+            particleSystem.GetComponent<CFXR_Effect>().clearBehavior = clearBehavior;
         }
     }
 }

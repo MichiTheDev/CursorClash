@@ -7,19 +7,20 @@ namespace MichiTheDev
     {
         [SerializeField] private float _health;
         [SerializeField] private float _hitCooldown;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioClipInfo[] _hitAudioClipInfos;
+        [SerializeField] private AudioClipInfo _deathAudioClipInfo;
 
         private bool _hitable;
         private Animator _anim;
-        private AudioClipInfo _hitAudioClipInfo;
+        private AudioSourceObject _sfxAudioSource;
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
 
-            _hitAudioClipInfo = new AudioClipInfo();
-            _hitAudioClipInfo.Name = "Hit_SFX";
-            _hitAudioClipInfo.Volume = 0.33f;
-            _hitAudioClipInfo.Category = "SFX";
+            _sfxAudioSource = new GameObject(name + " [Audio]").AddComponent<AudioSourceObject>();
         }
 
         private void Start()
@@ -33,16 +34,20 @@ namespace MichiTheDev
             
             _health -= damage;
             _anim.SetTrigger("Hit");
-
-            _hitAudioClipInfo.Pitch = Random.Range(1.5f, 1.6f);
-            AudioManager.Play(_hitAudioClipInfo);
             StartCoroutine(HitCooldown());
+            
+            ParticleManager.SpawnParticle("Hit_VFX", new Vector3(transform.position.x, transform.position.y, -1));
             
             if(_health <= 0)
             {
                 ParticleManager.SpawnParticle("Death_VFX", transform.position);
+                _deathAudioClipInfo.Pitch = Random.Range(_deathAudioClipInfo.Pitch - 0.25f, _deathAudioClipInfo.Pitch + 0.25f);
+                _sfxAudioSource.PlayOneShot(_deathAudioClipInfo);
                 Destroy(gameObject);
+                return;
             }
+            
+            _sfxAudioSource.PlayOneShot(_hitAudioClipInfos[Random.Range(0, _hitAudioClipInfos.Length)]);
         }
 
         private IEnumerator HitCooldown()
