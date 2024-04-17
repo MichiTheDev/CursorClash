@@ -12,7 +12,7 @@ namespace MichiTheDev
             _audioMixer = Resources.Load<AudioMixer>("Audio/MainMixer");
         }
 
-        public static void ChangeVolume(string group, float linearVolume)
+        public static void ChangeGroupVolume(string group, float linearVolume)
         {
             _audioMixer.SetFloat(group, LinearToDecibel(linearVolume));
         }

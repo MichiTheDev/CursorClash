@@ -30,6 +30,8 @@ namespace MichiTheDev
 
       private void Update()
       {
+         if(Mouse.current.leftButton.isPressed) GameManager.Instance.SetGameState(GameState.Playing);
+         
          if(_hasFocus) transform.position = (Vector2) _cam.ScreenToWorldPoint(Mouse.current.position.value);
 
          Enemy[] enemies = GetEnemyCollisions(transform.position, _previousMouseLocation);

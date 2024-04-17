@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MichiTheDev
 {
@@ -26,6 +28,11 @@ namespace MichiTheDev
         private void Start()
         {
             StartCoroutine(HitCooldown());
+        }
+
+        private void OnDestroy()
+        {
+            Destroy(_sfxAudioSource.gameObject);
         }
 
         public void Hit(float damage)
