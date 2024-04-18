@@ -7,6 +7,8 @@ namespace MichiTheDev
 {
     public class Enemy : MonoBehaviour
     {
+        public event Action<Enemy> OnDeath; 
+        
         [SerializeField] private float _health;
         [SerializeField] private float _hitCooldown;
         
@@ -32,6 +34,7 @@ namespace MichiTheDev
 
         private void OnDestroy()
         {
+            OnDeath?.Invoke(this);
             Destroy(_sfxAudioSource.gameObject);
         }
 
