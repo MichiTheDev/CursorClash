@@ -5,8 +5,8 @@ namespace MichiTheDev
     [CreateAssetMenu(menuName = "CursorClash/WaveData")]
     public class WaveData : ScriptableObject
     {
-        public Enemy[] Enemies => _enemies;
+        public int[] EnemyTiers => _enemyTiers;
         
-        [SerializeField] private Enemy[] _enemies;
+        [SerializeField] private int[] _enemyTiers;
     }
 }

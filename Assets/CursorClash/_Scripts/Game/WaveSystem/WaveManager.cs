@@ -24,10 +24,12 @@ namespace MichiTheDev
       private float _camWidth, _camHeight;
       private WaveData[] _waveDatas;
       private AudioSourceObject _audioSourceObject;
+      private Enemy[] _enemyTiers;
 
       private void Awake()
       {
          _waveDatas = Resources.LoadAll<WaveData>("Waves");
+         _enemyTiers = Resources.LoadAll<Enemy>("Enemies");
          
          _cam = Camera.main;
          _camHeight = 2f * _cam.orthographicSize;
@@ -63,11 +65,23 @@ namespace MichiTheDev
       private IEnumerator EnemySpawner()
       {
          yield return new WaitForSeconds(2f);
-         foreach(Enemy enemy in _waveDatas[_currentWave].Enemies)
+         foreach(int enemyTier in _waveDatas[_currentWave].EnemyTiers)
          {
-            float randomX = Random.Range(_camWidth / 2 * -1f + HorizontalBorderOffset, _camWidth / 2 - HorizontalBorderOffset);
-            float randomY = Random.Range(_camHeight / 2 * -1f + VerticalBorderOffset, _camHeight / 2 - VerticalBorderOffset);
-            Enemy spawnedEnemy = Instantiate(enemy, new Vector3(randomX, randomY), Quaternion.identity);
+            bool validSpawn = false;
+            Vector2 spawnPosition = new Vector2();
+            while(!validSpawn)
+            {
+               float randomX = Random.Range(_camWidth / 2 * -1f + HorizontalBorderOffset, _camWidth / 2 - HorizontalBorderOffset);
+               float randomY = Random.Range(_camHeight / 2 * -1f + VerticalBorderOffset, _camHeight / 2 - VerticalBorderOffset);
+               RaycastHit2D hit = Physics2D.CircleCast(new Vector2(randomX, randomY), 0.75f, Vector2.zero);
+               
+               if(hit.collider) continue;
+               
+               validSpawn = true;
+               spawnPosition = new Vector2(randomX, randomY);
+            }
+            
+            Enemy spawnedEnemy = Instantiate(_enemyTiers[enemyTier - 1], spawnPosition, Quaternion.identity);
             spawnedEnemy.OnDeath += EnemyDied;
             ++_enemiesAlive;
             _audioSourceObject.PlayOneShot(_enemySpawnClipInfo);

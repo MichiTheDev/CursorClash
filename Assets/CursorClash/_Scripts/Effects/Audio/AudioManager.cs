@@ -10,6 +10,8 @@ namespace MichiTheDev
         private void Awake()
         {
             _audioMixer = Resources.Load<AudioMixer>("Audio/MainMixer");
+            
+            DontDestroyOnLoad(gameObject);
         }
 
         public static void ChangeGroupVolume(string group, float linearVolume)

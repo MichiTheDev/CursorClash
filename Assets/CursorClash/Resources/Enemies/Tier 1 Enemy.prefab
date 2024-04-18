@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 411550712591803751}
   - component: {fileID: 7716268547300384753}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Tier 1 Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3844e4301e05a8543bd8c800ff2118f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
-  _hitCooldown: 0.15
+  _health: 4
+  _hitCooldown: 0.1
   _hitAudioClipInfos:
   - AudioClip: {fileID: 8300000, guid: e591ac6e64d3bd547bc70a880da36197, type: 3}
     AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
@@ -158,7 +158,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.75
 --- !u!95 &411550712591803751
 Animator:
   serializedVersion: 5

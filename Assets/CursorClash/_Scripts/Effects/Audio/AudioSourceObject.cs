@@ -20,12 +20,18 @@ namespace MichiTheDev
       {
          _audioSource.volume = newVolume;
       }
+
+      public void ChangePitch(float pitch)
+      {
+         _audioSource.pitch = pitch;
+      }
       
-      public void PlayOneShot(AudioClipInfo audioClipInfo)
+      public void PlayOneShot(AudioClipInfo audioClipInfo, bool randomPitch = false, Vector2 pitchRange = new ())
       {
          _oneShotAudioSource.outputAudioMixerGroup = audioClipInfo.AudioMixerGroup;
          _oneShotAudioSource.volume = audioClipInfo.Volume;
-         _oneShotAudioSource.pitch = audioClipInfo.Pitch;
+         if(randomPitch) _oneShotAudioSource.pitch = Random.Range(pitchRange.x, pitchRange.y);
+         else _oneShotAudioSource.pitch = audioClipInfo.Pitch;
          _oneShotAudioSource.PlayOneShot(audioClipInfo.AudioClip);
       }
 
