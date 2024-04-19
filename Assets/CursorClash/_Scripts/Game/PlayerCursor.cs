@@ -11,7 +11,7 @@ namespace MichiTheDev
       
       private SpriteRenderer _sr;
       private Camera _cam;
-      private bool _hasFocus;
+      private bool _hasFocus = true;
 
       private Vector2 _previousMouseLocation;
 

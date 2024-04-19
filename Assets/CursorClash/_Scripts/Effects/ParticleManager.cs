@@ -6,16 +6,23 @@ namespace MichiTheDev
 {
     public class ParticleManager : MonoBehaviour
     {
+        public static ParticleManager Instance { private set; get; }
+        
         private static Dictionary<string, ParticleSystem> _particles = new();
 
         private void Awake()
         {
+            if(Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
             ParticleSystem[] particles = Resources.LoadAll<ParticleSystem>("Particles");
             foreach(ParticleSystem particle in particles)
             {
                 _particles.Add(particle.name, particle);
             }
-            
             DontDestroyOnLoad(gameObject);
         }
 

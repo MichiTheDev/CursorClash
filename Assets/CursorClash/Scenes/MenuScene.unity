@@ -167,6 +167,8 @@ GameObject:
   - component: {fileID: 294852790}
   - component: {fileID: 294852789}
   - component: {fileID: 294852788}
+  - component: {fileID: 294852791}
+  - component: {fileID: 294852792}
   m_Layer: 0
   m_Name: Menu Canvas
   m_TagString: Untagged
@@ -258,6 +260,42 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!95 &294852791
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294852786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 922d19e578e2cb240bfe31d893ac2489, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &294852792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294852786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c3c6f49fdda79469077d3317241960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _titleScreen: {fileID: 1296057708}
+  _settingsScreen: {fileID: 4757421963050680143}
+  _anim: {fileID: 294852791}
 --- !u!1001 &343014524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -511,6 +549,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 294852792}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MichiTheDev.MenuCanvas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6633331056695166406, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -697,6 +763,34 @@ PrefabInstance:
     - target: {fileID: 4326285797992590336, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
       propertyPath: m_Name
       value: Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 294852792}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SettingsButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MichiTheDev.MenuCanvas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6633331056695166406, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
       propertyPath: m_Pivot.x
@@ -994,6 +1088,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 294852792}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MichiTheDev.MenuCanvas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186767488906474913, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6633331056695166406, guid: c0cce20925d735b488e29f6daf0d39d6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1153,7 +1275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 470225204317495365, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 470225204317495365, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1167,15 +1289,72 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1044660171998892918, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044660171998892918, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3324278040766173504, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
       propertyPath: m_Name
       value: Settings Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964944869729732559, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964944869729732559, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534413111238577114, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534413111238577114, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534413111238577114, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 294852792}
+    - target: {fileID: 6534413111238577114, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534413111238577114, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SettingsBackButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534413111238577114, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MichiTheDev.MenuCanvas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534413111238577114, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979334579880821634, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979334579880821634, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+--- !u!1 &4757421963050680143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3324278040766173504, guid: a7bf01d61cdf5844f852bf0a0f678c15, type: 3}
+  m_PrefabInstance: {fileID: 4757421963050680142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8918824516065081101
 PrefabInstance:
   m_ObjectHideFlags: 0

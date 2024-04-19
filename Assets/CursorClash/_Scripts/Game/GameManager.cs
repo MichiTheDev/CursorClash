@@ -28,9 +28,11 @@ namespace MichiTheDev
          DontDestroyOnLoad(gameObject);
 
          _mainThemeSourceObject = new GameObject("Main Theme [Audio]").AddComponent<AudioSourceObject>();
+         _mainThemeSourceObject.transform.SetParent(transform);
          _mainThemeSourceObject.Play(_mainTheme);
          
          _gameThemeSourceObject = new GameObject("Game Theme [Audio]").AddComponent<AudioSourceObject>();
+         _gameThemeSourceObject.transform.SetParent(transform);
          _gameThemeSourceObject.Play(_gameTheme);
          _gameThemeSourceObject.ChangeVolume(0f);
       }
@@ -52,11 +54,11 @@ namespace MichiTheDev
          {
             case GameState.Idle:
                _mainThemeSourceObject.StartFade(_mainTheme.Volume, 2.75f);
-               _gameThemeSourceObject.StartFade(0f, 2.75f);
+               _gameThemeSourceObject.StartFade(0f, 1.25f);
                break;
             case GameState.Playing:
                _mainThemeSourceObject.StartFade(0f, 2.75f);
-               _gameThemeSourceObject.StartFade(_gameTheme.Volume, 2.75f);
+               _gameThemeSourceObject.StartFade(_gameTheme.Volume, 1.25f);
                break;   
          }
       }
