@@ -61,7 +61,7 @@ namespace MichiTheDev
             if(_health <= 0)
             {
                 ParticleManager.SpawnParticle("Death_VFX", transform.position);
-                _deathAudioClipInfo.Pitch = Random.Range(_deathAudioClipInfo.Pitch - 0.25f, _deathAudioClipInfo.Pitch + 0.25f);
+                _deathAudioClipInfo.Pitch = Random.Range(_deathAudioClipInfo.Pitch, _deathAudioClipInfo.Pitch + 0.25f);
                 _sfxAudioSource.PlayOneShot(_deathAudioClipInfo);
                 Destroy(gameObject);
                 return;

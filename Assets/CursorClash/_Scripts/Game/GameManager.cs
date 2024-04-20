@@ -8,13 +8,15 @@ namespace MichiTheDev
       public static event Action<GameState> OnGameStateChanged;
       
       public static GameManager Instance { private set; get; }
+      
+      public GameState GameState => _gameState;
 
       [SerializeField] private AudioClipInfo _mainTheme;
       [SerializeField] private AudioClipInfo _gameTheme;
       
       private AudioSourceObject _mainThemeSourceObject;
       private AudioSourceObject _gameThemeSourceObject;
-
+      
       private GameState _gameState;
       
       private void Awake()

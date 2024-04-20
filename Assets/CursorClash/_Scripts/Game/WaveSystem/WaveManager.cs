@@ -7,18 +7,20 @@ namespace MichiTheDev
 {
    public class WaveManager : MonoBehaviour
    {
-      public event Action WaveStarted;
-      public event Action WaveEnded;
+      public static event Action<Enemy> OnEnemyDied;
       
-      private const float HorizontalBorderOffset = 2.5f;
-      private const float VerticalBorderOffset = 2.5f;
+      public event Action OnWaveStarted;
+      public event Action OnWaveEnded;
+      
+      private const float HorizontalBorderOffset = 1.5f;
+      private const float VerticalBorderOffset = 1.5f;
       
       public int CurrentWave => _currentWave;
 
       [SerializeField] private float _enemySpawnDelay = 0.1f;
       [SerializeField] private AudioClipInfo _enemySpawnClipInfo;
       
-      private int _currentWave = 0;
+      private int _currentWave;
       private int _enemiesAlive;
       private Camera _cam;
       private float _camWidth, _camHeight;
@@ -46,18 +48,20 @@ namespace MichiTheDev
       public void StartWave()
       {
          GameManager.Instance.SetGameState(GameState.Playing);
-         WaveStarted?.Invoke();
+         OnWaveStarted?.Invoke();
          StartCoroutine(EnemySpawner());
       }
 
       private void EnemyDied(Enemy enemy)
       {
          enemy.OnDeath -= EnemyDied;
+         OnEnemyDied?.Invoke(enemy);
          --_enemiesAlive;
          
          if(_enemiesAlive <= 0)
          {
-            WaveEnded?.Invoke();
+            OnWaveEnded?.Invoke();
+            ++_currentWave;
             GameManager.Instance.SetGameState(GameState.Idle);
          }
       }
@@ -73,7 +77,7 @@ namespace MichiTheDev
             {
                float randomX = Random.Range(_camWidth / 2 * -1f + HorizontalBorderOffset, _camWidth / 2 - HorizontalBorderOffset);
                float randomY = Random.Range(_camHeight / 2 * -1f + VerticalBorderOffset, _camHeight / 2 - VerticalBorderOffset);
-               RaycastHit2D hit = Physics2D.CircleCast(new Vector2(randomX, randomY), 0.75f, Vector2.zero);
+               RaycastHit2D hit = Physics2D.CircleCast(new Vector2(randomX, randomY), 0.1f, Vector2.zero);
                
                if(hit.collider) continue;
                

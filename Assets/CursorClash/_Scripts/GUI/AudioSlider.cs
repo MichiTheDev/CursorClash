@@ -24,6 +24,7 @@ namespace MichiTheDev
       public void VolumeChanged(float volume)
       {
          AudioManager.ChangeFloatParamter(name, volume);
+         _slider.value = volume;
          _volumeText.text = Mathf.RoundToInt(_slider.value * 100).ToString();
       }
    }

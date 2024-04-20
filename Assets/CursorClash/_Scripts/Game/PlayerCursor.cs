@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ namespace MichiTheDev
       [Header("Audio")]
       [SerializeField] private AudioClipInfo _spawnClipInfo;
       
+      private GameInput _gameInput;
       private SpriteRenderer _sr;
       private Camera _cam;
       private bool _hasFocus = true;
@@ -27,6 +29,23 @@ namespace MichiTheDev
 
          _audioSourceObject = new GameObject("Player Cursor [Audio]").AddComponent<AudioSourceObject>();
          _audioSourceObject.transform.SetParent(transform);
+
+         _gameInput = new GameInput();
+      }
+
+      private void OnEnable()
+      {
+         _gameInput.Player.TogglePause.started += TogglePauseInput;
+         
+         _gameInput.Enable();
+      }
+
+      private void TogglePauseInput(InputAction.CallbackContext context)
+      {
+         if(GameManager.Instance.GameState == GameState.Playing || GameHUD.Instance.InAnimation) return;
+
+         if(GameHUD.Instance.InSettings) GameHUD.Instance.CloseSettings();
+         else GameHUD.Instance.OpenSettings();
       }
 
       private void Start()
