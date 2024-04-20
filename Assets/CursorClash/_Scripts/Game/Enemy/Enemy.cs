@@ -45,7 +45,7 @@ namespace MichiTheDev
         private void OnDestroy()
         {
             OnDeath?.Invoke(this);
-            Destroy(_sfxAudioSource.gameObject);
+            Destroy(_sfxAudioSource.gameObject, 2f);
         }
 
         public void Hit(float damage)

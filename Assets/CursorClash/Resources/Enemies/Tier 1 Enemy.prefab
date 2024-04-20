@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3844e4301e05a8543bd8c800ff2118f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
-  _hitCooldown: 0.125
+  _health: 4
+  _hitCooldown: 0.1
   _srBody: {fileID: 2809292371376120563}
   _srOverlayBody: {fileID: 4958042999091377287}
   _defaultColor: {r: 0.9056604, g: 0.5339979, b: 0.8928348, a: 1}
@@ -226,24 +226,24 @@ MonoBehaviour:
   _hitAudioClipInfos:
   - AudioClip: {fileID: 8300000, guid: e591ac6e64d3bd547bc70a880da36197, type: 3}
     AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
-    Volume: 0.35
+    Volume: 0.45
     Pitch: 2
     Loop: 0
   - AudioClip: {fileID: 8300000, guid: f2714961eb7e70b4db2315fe639b7e62, type: 3}
     AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
-    Volume: 0.35
+    Volume: 0.45
     Pitch: 2
     Loop: 0
   - AudioClip: {fileID: 8300000, guid: 8abe0372154dfa640b973f37fb13dd7c, type: 3}
     AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
-    Volume: 0.35
+    Volume: 0.45
     Pitch: 2
     Loop: 0
   _deathAudioClipInfo:
-    AudioClip: {fileID: 8300000, guid: bcccdcabd9443424283ab004d2768fd8, type: 3}
+    AudioClip: {fileID: 8300000, guid: 315ad9cac569d93468921487317dc4c8, type: 3}
     AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
-    Volume: 0.15
-    Pitch: 1.5
+    Volume: 0.25
+    Pitch: 0.75
     Loop: 0
 --- !u!58 &1080082387282729457
 CircleCollider2D:

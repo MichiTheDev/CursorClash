@@ -13,6 +13,7 @@ namespace MichiTheDev
         public void PlayButtonClicked()
         {
             _anim.SetTrigger("Play");
+            DisableTitleScreen();
         }
 
         public void SettingsButtonClicked()
