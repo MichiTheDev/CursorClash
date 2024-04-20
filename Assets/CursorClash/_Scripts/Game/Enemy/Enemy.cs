@@ -12,8 +12,9 @@ namespace MichiTheDev
         [SerializeField] private float _health;
         [SerializeField] private float _hitCooldown;
         [SerializeField] private SpriteRenderer _srBody;
-        [SerializeField] private SpriteRenderer _srFace;
+        [SerializeField] private SpriteRenderer _srOverlayBody;
         [SerializeField] private Color _defaultColor;
+        [SerializeField] private Color _overlayBodyColor;
         
         [Header("Audio")]
         [SerializeField] private AudioClipInfo[] _hitAudioClipInfos;
@@ -33,6 +34,12 @@ namespace MichiTheDev
         private void Start()
         {
             StartCoroutine(HitCooldown());
+        }
+
+        private void Update()
+        {
+            _srOverlayBody.color = _overlayBodyColor;
+            _srBody.color = _defaultColor;
         }
 
         private void OnDestroy()
@@ -74,6 +81,9 @@ namespace MichiTheDev
         {
             if(_srBody == null || _defaultColor == null) return;
             _srBody.color = _defaultColor;
+            
+            if(_srOverlayBody == null || _overlayBodyColor == null) return;
+            _srOverlayBody.color = _overlayBodyColor;
         }
     }
 }
