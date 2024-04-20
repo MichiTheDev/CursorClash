@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 373832910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.125, y: -0.125, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: eea7ff564013ff2439cfc0259a533771, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f1ac5172139d584fbda14b35dc71470, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -446,8 +446,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9786ca6b28437d9449c091eef5fa3f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cursorSprite: {fileID: 21300000, guid: eea7ff564013ff2439cfc0259a533771, type: 3}
+  _cursorSprite: {fileID: 21300000, guid: 7f1ac5172139d584fbda14b35dc71470, type: 3}
   _hitRange: 0.175
+  _spawnClipInfo:
+    AudioClip: {fileID: 8300000, guid: a3a6f53e1db3f0a4ab057d55f7433e51, type: 3}
+    AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
+    Volume: 0.2
+    Pitch: 1
+    Loop: 0
 --- !u!1001 &1505123046
 PrefabInstance:
   m_ObjectHideFlags: 0

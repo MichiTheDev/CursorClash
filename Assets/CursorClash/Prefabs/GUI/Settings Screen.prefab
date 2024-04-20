@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 470225204317495365}
   - component: {fileID: 4967499334117570140}
   - component: {fileID: 7079398277539189427}
+  - component: {fileID: 1321942123731328879}
   m_Layer: 0
   m_Name: Settings Screen
   m_TagString: Untagged
@@ -82,6 +83,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1321942123731328879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3324278040766173504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9af767335cd16c43a9d37778a9aef92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _masterSlider: {fileID: 1364922018231084868}
+  _musicSlider: {fileID: 3136790014781060093}
+  _sfxSlider: {fileID: 8959311600810882992}
 --- !u!1001 &1113856243072728699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +252,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1321942123731328879}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MasterVolumeChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MichiTheDev.SettingsScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 953773256428568171, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
       propertyPath: m_Name
       value: Master Slider
@@ -253,6 +297,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+--- !u!114 &1364922018231084868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+  m_PrefabInstance: {fileID: 1474038193634991413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1686551906073034256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 221525104797246245, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
@@ -306,6 +361,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1321942123731328879}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MusicVolumeChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MichiTheDev.SettingsScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 953773256428568171, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
       propertyPath: m_Name
       value: Music Slider
@@ -327,6 +410,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+--- !u!114 &3136790014781060093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+  m_PrefabInstance: {fileID: 3246503052260755852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3323347269981055657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 221525104797246245, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
@@ -486,6 +580,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1321942123731328879}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SFXVolumeChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MichiTheDev.SettingsScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 953773256428568171, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
       propertyPath: m_Name
       value: SFX Slider
@@ -512,3 +634,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 221525104797246245, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
   m_PrefabInstance: {fileID: 8849615993453104577}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8959311600810882992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 470055194252360305, guid: 94c2fffb66a144c4ab664b9525f02a0d, type: 3}
+  m_PrefabInstance: {fileID: 8849615993453104577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

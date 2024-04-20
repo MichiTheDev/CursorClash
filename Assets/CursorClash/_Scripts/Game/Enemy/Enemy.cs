@@ -11,6 +11,9 @@ namespace MichiTheDev
         
         [SerializeField] private float _health;
         [SerializeField] private float _hitCooldown;
+        [SerializeField] private SpriteRenderer _srBody;
+        [SerializeField] private SpriteRenderer _srFace;
+        [SerializeField] private Color _defaultColor;
         
         [Header("Audio")]
         [SerializeField] private AudioClipInfo[] _hitAudioClipInfos;
@@ -65,6 +68,12 @@ namespace MichiTheDev
             _hitable = false;
             yield return new WaitForSeconds(_hitCooldown);
             _hitable = true;
+        }
+
+        private void OnValidate()
+        {
+            if(_srBody == null || _defaultColor == null) return;
+            _srBody.color = _defaultColor;
         }
     }
 }

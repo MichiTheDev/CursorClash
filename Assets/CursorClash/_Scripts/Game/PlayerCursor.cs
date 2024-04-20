@@ -8,12 +8,15 @@ namespace MichiTheDev
    {
       [SerializeField] private Sprite _cursorSprite;
       [SerializeField] private float _hitRange = 0.1f;
+
+      [Header("Audio")]
+      [SerializeField] private AudioClipInfo _spawnClipInfo;
       
       private SpriteRenderer _sr;
       private Camera _cam;
       private bool _hasFocus = true;
-
       private Vector2 _previousMouseLocation;
+      private AudioSourceObject _audioSourceObject;
 
       private void Awake()
       {
@@ -21,11 +24,16 @@ namespace MichiTheDev
          
          UpdateCursorSprite(_cursorSprite);
          ShowHardwareCursor(false);
+
+         _audioSourceObject = new GameObject("Player Cursor [Audio]").AddComponent<AudioSourceObject>();
+         _audioSourceObject.transform.SetParent(transform);
       }
 
       private void Start()
       {
          _previousMouseLocation = _cam.ScreenToWorldPoint(Mouse.current.position.value);
+         _audioSourceObject.PlayOneShot(_spawnClipInfo);
+         ParticleManager.SpawnParticle("Death_VFX", transform.position);
       }
 
       private void Update()

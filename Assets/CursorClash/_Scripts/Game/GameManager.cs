@@ -53,11 +53,11 @@ namespace MichiTheDev
          switch(newGameState)
          {
             case GameState.Idle:
-               _mainThemeSourceObject.StartFade(_mainTheme.Volume, 2.75f);
+               _mainThemeSourceObject.StartFade(_mainTheme.Volume * 0.75f, 1.25f);
                _gameThemeSourceObject.StartFade(0f, 1.25f);
                break;
             case GameState.Playing:
-               _mainThemeSourceObject.StartFade(0f, 2.75f);
+               _mainThemeSourceObject.StartFade(0f, 1.25f);
                _gameThemeSourceObject.StartFade(_gameTheme.Volume, 1.25f);
                break;   
          }

@@ -68,7 +68,7 @@ namespace MichiTheDev
         
         public void PlayAnimationEnded()
         {
-            SceneManager.LoadScene("TestScene");
+            SceneManager.LoadScene("GameScene");
         }
     }
 }

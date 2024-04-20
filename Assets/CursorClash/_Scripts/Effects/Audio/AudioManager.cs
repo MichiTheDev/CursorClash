@@ -14,23 +14,23 @@ namespace MichiTheDev
             DontDestroyOnLoad(gameObject);
         }
 
-        public static void ChangeGroupVolume(string group, float linearVolume)
+        public static void ChangeFloatParamter(string name, float linearVolume)
         {
-            _audioMixer.SetFloat(group, LinearToDecibel(linearVolume));
+            _audioMixer.SetFloat(name, LinearToDecibel(linearVolume));
         }
 
-        public static float GetLinearVolume(string group)
+        public static float GetLinearVolume(string name)
         {
-            if(_audioMixer.GetFloat(group, out float volume))
+            if(_audioMixer.GetFloat(name, out float volume))
             {
                 return DecibelToLinear(volume);
             }
             return 0f;
         }
 
-        public static float GetDecibelVolume(string group)
+        public static float GetDecibelVolume(string name)
         {
-            if(_audioMixer.GetFloat(group, out float volume))
+            if(_audioMixer.GetFloat(name, out float volume))
             {
                 return volume;
             }
