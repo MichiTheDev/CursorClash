@@ -27,8 +27,8 @@ namespace MichiTheDev
       {
          _cam = Camera.main;
          _anim = GetComponent<Animator>();
+         _sr = GetComponentInChildren<SpriteRenderer>();
          
-         UpdateCursorSprite(_cursorSprite);
          ShowHardwareCursor(false);
 
          _audioSourceObject = new GameObject("Player Cursor [Audio]").AddComponent<AudioSourceObject>();
@@ -64,9 +64,11 @@ namespace MichiTheDev
          {
             case GameState.Idle:
                ShowHardwareCursor(true);
+               _sr.enabled = false;
                break;
             case GameState.Playing:
                ShowHardwareCursor(false);
+               _sr.enabled = true;
                break;
          }
       }
@@ -118,16 +120,10 @@ namespace MichiTheDev
          _hitable = true;
       }
       
-      private void OnValidate()
-      {
-         if(_cursorSprite == null) return;
-         
-         UpdateCursorSprite(_cursorSprite);
-      }
-      
-      
       private void OnApplicationFocus(bool hasFocus)
       {
+         if (GameManager.Instance.GameState == GameState.Idle) return;
+         
          _hasFocus = hasFocus;
          ShowHardwareCursor(!hasFocus);
       }
@@ -138,22 +134,14 @@ namespace MichiTheDev
          {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            _sr.enabled = false;
          }
          else
          {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
-            _sr.enabled = true;
          }
       }
-
-      private void UpdateCursorSprite(Sprite sprite)
-      {
-         _sr = GetComponentInChildren<SpriteRenderer>();
-         _sr.sprite = sprite;
-      }
-
+      
       private Enemy[] GetEnemyCollisions(Vector2 currentMousePosition, Vector2 previousMousePosition)
       {
          float castLength = Vector2.Distance(currentMousePosition, previousMousePosition);
@@ -178,6 +166,5 @@ namespace MichiTheDev
          }
          return hitEnemies.ToArray();
       }
-
    }
 }
