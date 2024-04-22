@@ -105,7 +105,7 @@ namespace MichiTheDev
       {
          if(!_hitable) return;
          
-         ParticleManager.SpawnParticle("Player_Hit_VFX", transform.position - new Vector3(-0.33f, 0.33f));
+         ParticleManager.SpawnParticle("Player_Hit_VFX", new Vector3(0, -1f));
          _anim.SetTrigger("Hit");
          GameManager.Instance.FreezeGameForSeconds(.1f);
       }
