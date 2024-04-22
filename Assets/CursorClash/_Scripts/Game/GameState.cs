@@ -2,6 +2,6 @@
 {
    public enum GameState
    {
-      Idle, Playing
+      Idle, Playing, GameOver
    }
 }

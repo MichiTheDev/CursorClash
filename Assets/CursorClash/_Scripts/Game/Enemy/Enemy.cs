@@ -26,12 +26,33 @@ namespace MichiTheDev
         protected AudioSourceObject _sfxAudioSource;
         private float _attackTimer;
         private bool _attackOnCooldown;
+        private bool _gameOver;
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
 
             _sfxAudioSource = new GameObject(name + " [Audio]").AddComponent<AudioSourceObject>();
+        }
+
+        private void OnEnable()
+        {
+            GameManager.OnGameStateChanged += GameStateChanged;
+        }
+
+        private void GameStateChanged(GameState gameState)
+        {
+            switch(gameState)
+            {
+                case GameState.Idle:
+                    break;
+                case GameState.Playing:
+                    break;
+                case GameState.GameOver:
+                    _anim.SetBool("GameOver", true);
+                    _gameOver = true;
+                    break;
+            }
         }
 
         private void Start()
@@ -48,8 +69,8 @@ namespace MichiTheDev
 
         private void Update()
         {
-            _srBody.color = _defaultColor;
-
+            if(_gameOver) return;
+            
             if (!_attackOnCooldown)
             {
                 _attackTimer += Time.deltaTime;
@@ -68,12 +89,13 @@ namespace MichiTheDev
         private void OnDestroy()
         {
             OnDeath?.Invoke(this);
-            Destroy(_sfxAudioSource.gameObject, 2f);
+            GameManager.OnGameStateChanged -= GameStateChanged;
+            _sfxAudioSource.DestroySelf(2f);
         }
 
         public void Hit(float damage)
         {
-            if(!_hitable) return;
+            if(!_hitable || _gameOver) return;
             
             _health -= damage;
             _anim.SetTrigger("Hit");
@@ -95,12 +117,16 @@ namespace MichiTheDev
 
         private void TriggerCharge()
         {
+            if(_gameOver) return;
+            
             _anim.SetBool("Attacking", true);
             _anim.SetTrigger("Charge");
         }
         
         protected virtual void Attack()
         {
+            if(_gameOver) return;
+            
             _attackCollider.enabled = true;
             _hitable = false;
             StartCoroutine(AttackCooldown());
@@ -108,6 +134,8 @@ namespace MichiTheDev
 
         private void StopAttack()
         {
+            if(_gameOver) return;
+            
             _hitable = true;
             _attackCollider.enabled = false;
             _anim.SetBool("Attacking", false);
@@ -134,12 +162,15 @@ namespace MichiTheDev
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if(_gameOver) return;
+            
             if (_attackCollider.enabled)
             {
                 PlayerCursor playerCursor = other.GetComponent<PlayerCursor>();
                 if (playerCursor)
                 {
                     playerCursor.TakeDamage();
+                    _attackCollider.enabled = false;
                 }
             }
         }

@@ -14,6 +14,7 @@ namespace MichiTheDev
         [SerializeField] private GameObject _settingsScreen;
         [SerializeField] private Animator _anim;
         [SerializeField] private Animator _upgradeAnim;
+        [SerializeField] private Animator _baseAnim;
         
         private bool _inSettings;
         private bool _inAnimation;
@@ -34,6 +35,7 @@ namespace MichiTheDev
 
             StartCoroutine(TriggerSettingsAnimation("OpenSettings"));
             _upgradeAnim.SetTrigger("Close");
+            _baseAnim.SetTrigger("Close");
             _inSettings = true;
             EnableSettings();
         }
@@ -43,6 +45,7 @@ namespace MichiTheDev
             if(_inAnimation) return;
             
             _anim.SetTrigger("CloseSettings");
+            _baseAnim.SetTrigger("Open");
             StartCoroutine(TriggerUpgradeAnimation("Open"));
             _inSettings = false;
             DisableSettings();

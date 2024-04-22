@@ -35,6 +35,11 @@ namespace MichiTheDev
          _oneShotAudioSource.PlayOneShot(audioClipInfo.AudioClip);
       }
 
+      public void DestroySelf(float seconds)
+      {
+         Destroy(gameObject, seconds);
+      }
+      
       public void Play(AudioClipInfo audioClipInfo)
       {
          _audioSource.outputAudioMixerGroup = audioClipInfo.AudioMixerGroup;
