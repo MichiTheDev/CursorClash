@@ -69,6 +69,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
+      propertyPath: _attackCooldown
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
       propertyPath: _defaultColor.b
       value: 1
       objectReference: {fileID: 0}

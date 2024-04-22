@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace MichiTheDev
@@ -44,12 +45,25 @@ namespace MichiTheDev
          OnGameStateChanged += GameStateChanged;
       }
 
+      public void FreezeGameForSeconds(float seconds)
+      {
+         StartCoroutine(Freeze(seconds));
+      }
+      
       public void SetGameState(GameState newGameState)
       {
          _gameState = newGameState;
          OnGameStateChanged?.Invoke(_gameState);
       }
 
+      private IEnumerator Freeze(float seconds)
+      {
+         yield return new WaitForSeconds(0.1f);
+         Time.timeScale = 0.05f;
+         yield return new WaitForSeconds(seconds * 0.05f);
+         Time.timeScale = 1f;
+      }
+      
       private void GameStateChanged(GameState newGameState)
       {
          switch(newGameState)

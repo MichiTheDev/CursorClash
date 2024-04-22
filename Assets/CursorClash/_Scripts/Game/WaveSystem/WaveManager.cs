@@ -9,8 +9,8 @@ namespace MichiTheDev
    {
       public static event Action<Enemy> OnEnemyDied;
       
-      public event Action OnWaveStarted;
-      public event Action OnWaveEnded;
+      public static event Action OnWaveStarted;
+      public static event Action OnWaveEnded;
       
       private const float HorizontalBorderOffset = 1.5f;
       private const float VerticalBorderOffset = 1.5f;

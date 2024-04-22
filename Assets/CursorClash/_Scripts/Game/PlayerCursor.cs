@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +9,7 @@ namespace MichiTheDev
    {
       [SerializeField] private Sprite _cursorSprite;
       [SerializeField] private float _hitRange = 0.1f;
+      [SerializeField] private GameObject _comboPrefab;
 
       [Header("Audio")]
       [SerializeField] private AudioClipInfo _spawnClipInfo;
@@ -16,13 +17,16 @@ namespace MichiTheDev
       private GameInput _gameInput;
       private SpriteRenderer _sr;
       private Camera _cam;
+      private Animator _anim;
       private bool _hasFocus = true;
       private Vector2 _previousMouseLocation;
       private AudioSourceObject _audioSourceObject;
+      private bool _hitable = true;
 
       private void Awake()
       {
          _cam = Camera.main;
+         _anim = GetComponent<Animator>();
          
          UpdateCursorSprite(_cursorSprite);
          ShowHardwareCursor(false);
@@ -35,9 +39,36 @@ namespace MichiTheDev
 
       private void OnEnable()
       {
+         GameManager.OnGameStateChanged += GameStateChanged;
+         WaveManager.OnEnemyDied += EnemyDied;
          _gameInput.Player.TogglePause.started += TogglePauseInput;
          
          _gameInput.Enable();
+      }
+
+      private void EnemyDied(Enemy enemy)
+      {
+         Animator animator = Instantiate(_comboPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Animator>();
+         animator.gameObject.GetComponent<TMP_Text>().text = $"Combo: {ScoreManager.Instance.Combo}";
+         animator.SetTrigger("Combo");
+      }
+
+      private void OnDisable()
+      {
+         GameManager.OnGameStateChanged -= GameStateChanged;
+      }
+
+      private void GameStateChanged(GameState newGameState)
+      {
+         switch (newGameState)
+         {
+            case GameState.Idle:
+               ShowHardwareCursor(true);
+               break;
+            case GameState.Playing:
+               ShowHardwareCursor(false);
+               break;
+         }
       }
 
       private void TogglePauseInput(InputAction.CallbackContext context)
@@ -68,6 +99,25 @@ namespace MichiTheDev
          _previousMouseLocation = transform.position;
       }
 
+      public void TakeDamage()
+      {
+         if(!_hitable) return;
+         
+         ParticleManager.SpawnParticle("Player_Hit_VFX", transform.position - new Vector3(-0.33f, 0.33f));
+         _anim.SetTrigger("Hit");
+         GameManager.Instance.FreezeGameForSeconds(.1f);
+      }
+
+      public void EnableGhost()
+      {
+         _hitable = false;
+      }
+
+      public void DisableGhost()
+      {
+         _hitable = true;
+      }
+      
       private void OnValidate()
       {
          if(_cursorSprite == null) return;
@@ -88,11 +138,13 @@ namespace MichiTheDev
          {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            _sr.enabled = false;
          }
          else
          {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
+            _sr.enabled = true;
          }
       }
 

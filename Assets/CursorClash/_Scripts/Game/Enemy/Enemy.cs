@@ -9,20 +9,23 @@ namespace MichiTheDev
     {
         public event Action<Enemy> OnDeath; 
         
-        [SerializeField] private float _health;
-        [SerializeField] private float _hitCooldown;
-        [SerializeField] private SpriteRenderer _srBody;
-        [SerializeField] private SpriteRenderer _srOverlayBody;
-        [SerializeField] private Color _defaultColor;
-        [SerializeField] private Color _overlayBodyColor;
+        [SerializeField] protected float _health;
+        [SerializeField] protected float _hitCooldown;
+        [SerializeField] protected SpriteRenderer _srBody;
+        [SerializeField] protected Color _defaultColor;
+        [SerializeField] protected float _attackCooldown;
+        [SerializeField] protected float _attackTriggerChance = 0.5f;
+        [SerializeField] protected Collider2D _attackCollider;
         
         [Header("Audio")]
-        [SerializeField] private AudioClipInfo[] _hitAudioClipInfos;
-        [SerializeField] private AudioClipInfo _deathAudioClipInfo;
+        [SerializeField] protected AudioClipInfo[] _hitAudioClipInfos;
+        [SerializeField] protected AudioClipInfo _deathAudioClipInfo;
 
-        private bool _hitable;
-        private Animator _anim;
-        private AudioSourceObject _sfxAudioSource;
+        protected bool _hitable;
+        protected Animator _anim;
+        protected AudioSourceObject _sfxAudioSource;
+        private float _attackTimer;
+        private bool _attackOnCooldown;
 
         private void Awake()
         {
@@ -33,13 +36,33 @@ namespace MichiTheDev
 
         private void Start()
         {
+            _attackCollider.enabled = false;
             StartCoroutine(HitCooldown());
+
+            if (Random.Range(0f, 1f) <= 0.33f)
+            {
+                _attackOnCooldown = true;
+                StartCoroutine(AttackCooldown());
+            }
         }
 
         private void Update()
         {
-            _srOverlayBody.color = _overlayBodyColor;
             _srBody.color = _defaultColor;
+
+            if (!_attackOnCooldown)
+            {
+                _attackTimer += Time.deltaTime;
+                if (_attackTimer >= 1f)
+                {
+                    if (Random.Range(0f, 1f) <= _attackTriggerChance)
+                    {
+                        _attackOnCooldown = true;
+                        TriggerCharge();
+                    }
+                    _attackTimer = 0;
+                }
+            }
         }
 
         private void OnDestroy()
@@ -70,6 +93,26 @@ namespace MichiTheDev
             _sfxAudioSource.PlayOneShot(_hitAudioClipInfos[Random.Range(0, _hitAudioClipInfos.Length)]);
         }
 
+        private void TriggerCharge()
+        {
+            _anim.SetBool("Attacking", true);
+            _anim.SetTrigger("Charge");
+        }
+        
+        protected virtual void Attack()
+        {
+            _attackCollider.enabled = true;
+            _hitable = false;
+            StartCoroutine(AttackCooldown());
+        }
+
+        private void StopAttack()
+        {
+            _hitable = true;
+            _attackCollider.enabled = false;
+            _anim.SetBool("Attacking", false);
+        }
+
         private IEnumerator HitCooldown()
         {
             _hitable = false;
@@ -77,13 +120,28 @@ namespace MichiTheDev
             _hitable = true;
         }
 
+        private IEnumerator AttackCooldown()
+        {
+            yield return new WaitForSeconds(_attackCooldown);
+            _attackOnCooldown = false;
+        }
+        
         private void OnValidate()
         {
             if(_srBody == null || _defaultColor == null) return;
             _srBody.color = _defaultColor;
-            
-            if(_srOverlayBody == null || _overlayBodyColor == null) return;
-            _srOverlayBody.color = _overlayBodyColor;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (_attackCollider.enabled)
+            {
+                PlayerCursor playerCursor = other.GetComponent<PlayerCursor>();
+                if (playerCursor)
+                {
+                    playerCursor.TakeDamage();
+                }
+            }
         }
     }
 }

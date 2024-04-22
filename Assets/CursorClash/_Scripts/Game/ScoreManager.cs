@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -5,6 +6,10 @@ namespace MichiTheDev
 {
     public class ScoreManager : MonoBehaviour
     {
+        public static ScoreManager Instance { private set; get; }
+
+        public int Combo => _combo;
+        
         [SerializeField] private float _timeUntilComboRunsOut = 1f;
         [SerializeField] private float _score;
         [SerializeField] private float _scoreMultiplierPerCombo = .1f;
@@ -15,6 +20,11 @@ namespace MichiTheDev
         private float _comboTimer;
         private bool _inCombo;
         private int _combo;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void OnEnable()
         {
@@ -29,7 +39,7 @@ namespace MichiTheDev
 
             _score += _scorePerKill * (1 + _scoreMultiplierPerCombo * _combo);
             _scoreText.text = $"Score: {Mathf.RoundToInt(_score).ToString("N0")}";
-            _scoreAnimator.SetTrigger("AddScore");
+            if(_scoreAnimator) _scoreAnimator.SetTrigger("AddScore");
         }
 
         private void Update()
