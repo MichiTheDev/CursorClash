@@ -84,6 +84,10 @@ namespace MichiTheDev
                ShowHardwareCursor(false);
                _sr.enabled = true;
                break;
+            case GameState.GameOver:
+               ShowHardwareCursor(true);
+               _sr.enabled = false;
+               break;
          }
       }
 
@@ -106,11 +110,7 @@ namespace MichiTheDev
 
       private void Update()
       {
-         if(_dead)
-         {
-            transform.position +=  Time.deltaTime * 2 * Vector3.down;
-            return;
-         }
+         if(_dead) return;
          
          if(_hasFocus) transform.position = (Vector2) _cam.ScreenToWorldPoint(Mouse.current.position.value);
 
@@ -136,13 +136,16 @@ namespace MichiTheDev
             GameManager.Instance.SetGameState(GameState.GameOver);
             ParticleManager.SpawnParticle("Player_Death_Skull_VFX", transform.position);
             ParticleManager.SpawnParticle("Player_Death_Souls_VFX", transform.position);
+            ParticleManager.SpawnParticle("Magic_Poof_VFX", transform.position);
+            _sr.enabled = false;
             _dead = true;
             return;
          }
          
          _audioSourceObject.PlayOneShot(_hitClipInfo);
+         ParticleManager.SpawnParticle("Player_Hit_VFX", transform.position);
          _anim.SetTrigger("Hit");
-         GameManager.Instance.FreezeGameForSeconds(.1f);
+         GameManager.Instance.FreezeGameForSeconds(.2f);
       }
 
       public void EnableGhost()

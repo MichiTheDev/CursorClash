@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,14 +20,16 @@ namespace MichiTheDev
 
       [SerializeField] private float _enemySpawnDelay = 0.1f;
       [SerializeField] private AudioClipInfo _enemySpawnClipInfo;
+      [SerializeField] private TMP_Text _waveInfoText;
       
-      private int _currentWave;
+      private int _currentWave = -1;
       private int _enemiesAlive;
       private Camera _cam;
       private float _camWidth, _camHeight;
       private WaveData[] _waveDatas;
       private AudioSourceObject _audioSourceObject;
       private Enemy[] _enemyTiers;
+      private Coroutine _spawnRoutine;
 
       private void Awake()
       {
@@ -40,6 +43,26 @@ namespace MichiTheDev
          _audioSourceObject = new GameObject("Wave Manager [Audio]").AddComponent<AudioSourceObject>();
       }
 
+      private void OnEnable()
+      {
+         GameManager.OnGameStateChanged += GameStateChanged;
+      }
+
+      private void GameStateChanged(GameState gameState)
+      {
+         switch (gameState)
+         {
+            case GameState.Idle:
+               break;
+            case GameState.Playing:
+               break;
+            case GameState.GameOver:
+               GameManager.OnGameStateChanged -= GameStateChanged;
+               StopCoroutine(_spawnRoutine);
+               break;
+         }
+      }
+
       private void Start()
       {
          StartWave();
@@ -47,9 +70,11 @@ namespace MichiTheDev
 
       public void StartWave()
       {
+         _currentWave++;
+         _waveInfoText.text = $"Wave: {_currentWave + 1}";
          GameManager.Instance.SetGameState(GameState.Playing);
          OnWaveStarted?.Invoke();
-         StartCoroutine(EnemySpawner());
+         _spawnRoutine = StartCoroutine(EnemySpawner());
       }
 
       private void EnemyDied(Enemy enemy)
@@ -61,7 +86,6 @@ namespace MichiTheDev
          if(_enemiesAlive <= 0)
          {
             OnWaveEnded?.Invoke();
-            ++_currentWave;
             GameManager.Instance.SetGameState(GameState.Idle);
          }
       }

@@ -20,11 +20,6 @@ namespace MichiTheDev
       {
          _audioSource.volume = newVolume;
       }
-
-      public void ChangePitch(float pitch)
-      {
-         _audioSource.pitch = pitch;
-      }
       
       public void PlayOneShot(AudioClipInfo audioClipInfo, bool randomPitch = false, Vector2 pitchRange = new ())
       {
@@ -33,11 +28,6 @@ namespace MichiTheDev
          if(randomPitch) _oneShotAudioSource.pitch = Random.Range(pitchRange.x, pitchRange.y);
          else _oneShotAudioSource.pitch = audioClipInfo.Pitch;
          _oneShotAudioSource.PlayOneShot(audioClipInfo.AudioClip);
-      }
-
-      public void DestroySelf(float seconds)
-      {
-         Destroy(gameObject, seconds);
       }
       
       public void Play(AudioClipInfo audioClipInfo)

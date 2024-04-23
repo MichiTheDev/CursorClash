@@ -9,7 +9,8 @@ namespace MichiTheDev
       public static event Action<GameState> OnGameStateChanged;
       
       public static GameManager Instance { private set; get; }
-      
+
+      public bool FadeOut { set; get; }
       public GameState GameState => _gameState;
 
       [SerializeField] private AudioClipInfo _mainTheme;
@@ -17,7 +18,6 @@ namespace MichiTheDev
       
       private AudioSourceObject _mainThemeSourceObject;
       private AudioSourceObject _gameThemeSourceObject;
-      
       private GameState _gameState;
       
       private void Awake()
@@ -76,6 +76,25 @@ namespace MichiTheDev
                _mainThemeSourceObject.StartFade(0f, 1.25f);
                _gameThemeSourceObject.StartFade(_gameTheme.Volume, 1.25f);
                break;   
+            case GameState.GameOver:
+               _gameThemeSourceObject.StartFade(0f, 2f);
+               _mainThemeSourceObject.StartFade(0f, 2f);
+               Invoke("KillAllEnemies", 0.25f);
+               break;
+         }
+      }
+
+      public void PlayMenuMukke()
+      {
+         _mainThemeSourceObject.StartFade(_mainTheme.Volume, 1.25f);
+      }
+      
+      private void KillAllEnemies()
+      {
+         Enemy[] enemies = FindObjectsOfType<Enemy>();
+         foreach (Enemy enemy in enemies)
+         {
+            Destroy(enemy.gameObject);
          }
       }
    }

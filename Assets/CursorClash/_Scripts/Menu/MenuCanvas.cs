@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,11 +10,25 @@ namespace MichiTheDev
         [SerializeField] private GameObject _titleScreen;
         [SerializeField] private GameObject _settingsScreen;
         [SerializeField] private Animator _anim;
+        [SerializeField] private Animator _transitionAnim;
 
         public void PlayButtonClicked()
         {
             _anim.SetTrigger("Play");
             DisableTitleScreen();
+        }
+
+        private void Start()
+        {
+            if (GameManager.Instance.FadeOut)
+            {
+                _transitionAnim.SetTrigger("FadeOut");
+                GameManager.Instance.FadeOut = false;
+            }
+            else
+            {
+                _transitionAnim.gameObject.SetActive(false);
+            }
         }
 
         public void SettingsButtonClicked()

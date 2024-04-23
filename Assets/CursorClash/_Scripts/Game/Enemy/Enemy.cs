@@ -49,6 +49,7 @@ namespace MichiTheDev
                 case GameState.Playing:
                     break;
                 case GameState.GameOver:
+                    GameManager.OnGameStateChanged -= GameStateChanged;
                     _anim.SetBool("GameOver", true);
                     _gameOver = true;
                     break;
@@ -85,14 +86,7 @@ namespace MichiTheDev
                 }
             }
         }
-
-        private void OnDestroy()
-        {
-            OnDeath?.Invoke(this);
-            GameManager.OnGameStateChanged -= GameStateChanged;
-            _sfxAudioSource.DestroySelf(2f);
-        }
-
+        
         public void Hit(float damage)
         {
             if(!_hitable || _gameOver) return;
@@ -108,6 +102,8 @@ namespace MichiTheDev
                 ParticleManager.SpawnParticle("Death_VFX", transform.position);
                 _deathAudioClipInfo.Pitch = Random.Range(_deathAudioClipInfo.Pitch, _deathAudioClipInfo.Pitch + 0.25f);
                 _sfxAudioSource.PlayOneShot(_deathAudioClipInfo);
+                OnDeath?.Invoke(this);
+                GameManager.OnGameStateChanged -= GameStateChanged;
                 Destroy(gameObject);
                 return;
             }

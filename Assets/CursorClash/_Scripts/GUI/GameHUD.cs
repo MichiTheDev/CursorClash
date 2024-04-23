@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MichiTheDev
@@ -15,18 +18,50 @@ namespace MichiTheDev
         [SerializeField] private Animator _anim;
         [SerializeField] private Animator _upgradeAnim;
         [SerializeField] private Animator _baseAnim;
+        [SerializeField] private Animator _gameOverAnim;
+        [SerializeField] private Animator _transitionAnim;
+        [SerializeField] private Button _backToMenuButton;
+        [SerializeField] private Button _tryAgainButton;
+        [SerializeField] private TMP_Text _gameOverScoreText;
         
         private bool _inSettings;
         private bool _inAnimation;
         
         private void Awake()
         {
-            if(Instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
             Instance = this;
+        }
+
+        private void OnEnable()
+        {
+            GameManager.OnGameStateChanged += GameStateChanged;
+        }
+
+        private void Start()
+        {
+            if (GameManager.Instance.FadeOut)
+            {
+                _transitionAnim.SetTrigger("FadeOut");
+            }
+            else
+            {
+                _transitionAnim.gameObject.SetActive(false);
+            }
+        }
+
+        private void GameStateChanged(GameState gameState)
+        {
+            switch (gameState)
+            {
+                case GameState.Idle:
+                    break;
+                case GameState.Playing:
+                    break;
+                case GameState.GameOver:
+                    GameManager.OnGameStateChanged -= GameStateChanged;
+                    OnGameOver();
+                    break;
+            }
         }
 
         public void OpenSettings()
@@ -49,6 +84,19 @@ namespace MichiTheDev
             StartCoroutine(TriggerUpgradeAnimation("Open"));
             _inSettings = false;
             DisableSettings();
+        }
+
+        private void OnGameOver()
+        {
+            _baseAnim.SetTrigger("Hide");
+            StartCoroutine(StartLater());
+
+            IEnumerator StartLater()
+            {
+                yield return new WaitForSeconds(0.75f);
+                _gameOverAnim.SetTrigger("Open");
+                _gameOverScoreText.text = $"{Mathf.RoundToInt(ScoreManager.Instance.Score).ToString("N0")}";
+            }
         }
 
         private IEnumerator TriggerUpgradeAnimation(string parameter)
@@ -81,6 +129,24 @@ namespace MichiTheDev
             }
         }
 
+        public void TriggerTryAgain()
+        {
+            _transitionAnim.gameObject.SetActive(true);
+            _transitionAnim.SetTrigger("FadeInTryAgain");
+            GameManager.Instance.FadeOut = true;
+            _backToMenuButton.interactable = false;
+            _tryAgainButton.interactable = false;
+        }
+
+        public void TriggerBackToMenu()
+        {
+            _transitionAnim.gameObject.SetActive(true);
+            _transitionAnim.SetTrigger("FadeInBackToMenu");
+            GameManager.Instance.FadeOut = true;
+            _backToMenuButton.interactable = false;
+            _tryAgainButton.interactable = false;
+        }
+        
         public void SetInAnimationTrue()
         {
             _inAnimation = true;

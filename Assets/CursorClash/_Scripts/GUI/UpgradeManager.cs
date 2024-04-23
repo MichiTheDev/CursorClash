@@ -24,7 +24,7 @@ namespace MichiTheDev
 
         public void EnableUpgradeScreen()
         {
-            if(_upgradesOpen) return;
+            if(_upgradesOpen || !_animator) return;
             
             _animator.SetTrigger("Open");
             _upgradesOpen = true;

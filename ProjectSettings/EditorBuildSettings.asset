@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/CursorClash/Scenes/MenuScene.unity
+    guid: 7ecce7807e440c44e9c8a6a0ce94f051
+  - enabled: 1
     path: Assets/CursorClash/Scenes/GameScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}

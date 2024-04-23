@@ -9,6 +9,7 @@ namespace MichiTheDev
         public static ScoreManager Instance { private set; get; }
 
         public int Combo => _combo;
+        public float Score => _score;
         
         [SerializeField] private float _timeUntilComboRunsOut = 1f;
         [SerializeField] private float _score;
