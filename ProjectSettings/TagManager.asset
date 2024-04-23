@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - Coin
+  - KillZone
   layers:
   - Default
   - TransparentFX

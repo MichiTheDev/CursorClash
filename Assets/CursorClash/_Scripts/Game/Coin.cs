@@ -8,7 +8,7 @@ namespace MichiTheDev
         [SerializeField] protected Vector2 _targetPosition;
 
         protected bool _collecting;
-        protected float _currentSpeed = 6;
+        protected float _currentSpeed = 7;
         
         public void Collect()
         {
@@ -23,13 +23,7 @@ namespace MichiTheDev
 
             Vector3 direction = _targetPosition - (Vector2) transform.position;
             transform.position += _currentSpeed * Time.deltaTime * direction.normalized;
-            _currentSpeed *= 1.01f;
-
-            if (Vector2.Distance(transform.position, _targetPosition) <= 0.1f)
-            {
-                UpgradeManager.Instance.AddCoins(1);
-                Destroy(gameObject);
-            }
+            _currentSpeed += .05f;
         }
     }
 }

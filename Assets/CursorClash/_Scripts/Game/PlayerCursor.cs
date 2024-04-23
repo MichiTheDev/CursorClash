@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -11,6 +9,8 @@ namespace MichiTheDev
 {
    public class PlayerCursor : MonoBehaviour
    {
+      public static PlayerCursor Instance;
+      
       [SerializeField] private Sprite _cursorSprite;
       [SerializeField] private float _hitRange = 0.1f;
       [SerializeField] private GameObject _comboPrefab;
@@ -38,6 +38,8 @@ namespace MichiTheDev
 
       private void Awake()
       {
+         Instance = this;
+          
          _cam = Camera.main;
          _anim = GetComponent<Animator>();
          _sr = GetComponentInChildren<SpriteRenderer>();
@@ -105,10 +107,15 @@ namespace MichiTheDev
       {
          _previousMouseLocation = _cam.ScreenToWorldPoint(Mouse.current.position.value);
          _audioSourceObject.PlayOneShot(_spawnClipInfo);
-         ParticleManager.SpawnParticle("Death_VFX", transform.position);
+         Invoke("SpawnParticle", 0.1f);
          UpdateHealthDisplay();
       }
 
+      private void SpawnParticle()
+      {
+         ParticleManager.SpawnParticle("Death_VFX", transform.position);
+      }
+      
       private void Update()
       {
          if(_dead) return;
@@ -150,6 +157,11 @@ namespace MichiTheDev
          GameManager.Instance.FreezeGameForSeconds(.2f);
       }
 
+      public void Hide()
+      {
+         _sr.enabled = false;
+      }
+      
       public void EnableGhost()
       {
          _hitable = false;

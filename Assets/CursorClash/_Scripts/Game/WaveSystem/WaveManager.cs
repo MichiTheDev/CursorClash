@@ -85,8 +85,16 @@ namespace MichiTheDev
          
          if(_enemiesAlive <= 0)
          {
-            OnWaveEnded?.Invoke();
-            GameManager.Instance.SetGameState(GameState.Idle);
+            if (_waveDatas.Length == _currentWave + 1)
+            {
+               PlayerCursor.Instance.Hide();
+               GameManager.Instance.SetGameState(GameState.GameOver);
+            }
+            else
+            {
+               GameManager.Instance.SetGameState(GameState.Idle);
+               OnWaveEnded?.Invoke();
+            }
          }
       }
       

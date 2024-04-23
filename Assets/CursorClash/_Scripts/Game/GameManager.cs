@@ -81,6 +81,7 @@ namespace MichiTheDev
                _gameThemeSourceObject.StartFade(0f, 2f);
                _mainThemeSourceObject.StartFade(0f, 2f);
                Invoke("KillAllEnemies", 0.25f);
+               KillAllCoins();
                break;
          }
       }
@@ -105,6 +106,15 @@ namespace MichiTheDev
          foreach (Coin coin in coins)
          {
             coin.Collect();
+         }
+      }
+
+      private void KillAllCoins()
+      {
+         Coin[] coins = FindObjectsOfType<Coin>();
+         foreach (Coin coin in coins)
+         {
+            Destroy(coin.gameObject);
          }
       }
    }
