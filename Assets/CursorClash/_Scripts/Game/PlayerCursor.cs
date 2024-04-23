@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -237,6 +238,14 @@ namespace MichiTheDev
             }
          }
          return hitEnemies.ToArray();
+      }
+
+      private void OnTriggerEnter2D(Collider2D other)
+      {
+         if (other.CompareTag("Coin"))
+         {
+            other.GetComponent<Coin>().Collect();
+         }
       }
    }
 }

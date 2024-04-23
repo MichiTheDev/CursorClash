@@ -1,13 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
+using UnityEngine;
 
 namespace MichiTheDev
 {
     public class UpgradeManager : MonoBehaviour
     {
-        [SerializeField] private Animator _animator;
-
-        private bool _upgradesOpen;
+        public static UpgradeManager Instance;
         
+        [SerializeField] private Animator _animator;
+        [SerializeField] private TMP_Text _coinText;
+
+        private int _coins;
+        private bool _upgradesOpen;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void OnEnable()
         {
             WaveManager.OnWaveStarted += DisableUpgradeScreen;
@@ -28,6 +39,12 @@ namespace MichiTheDev
             
             _animator.SetTrigger("Open");
             _upgradesOpen = true;
+        }
+
+        public void AddCoins(int coins)
+        {
+            _coins += coins;
+            _coinText.text = _coins.ToString("N0");
         }
     }
 }

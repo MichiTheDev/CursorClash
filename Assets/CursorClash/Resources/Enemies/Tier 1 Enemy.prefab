@@ -225,6 +225,8 @@ MonoBehaviour:
   _attackCooldown: 3
   _attackTriggerChance: 0.5
   _attackCollider: {fileID: 9057940752650189700}
+  _changeToDropCoins: 0.2
+  _coinPrefab: {fileID: 4410360970985847071, guid: c936243a1d908d14bb9810cb6170f3b4, type: 3}
   _hitAudioClipInfos:
   - AudioClip: {fileID: 8300000, guid: e591ac6e64d3bd547bc70a880da36197, type: 3}
     AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}

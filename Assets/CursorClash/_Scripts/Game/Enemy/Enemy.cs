@@ -16,6 +16,8 @@ namespace MichiTheDev
         [SerializeField] protected float _attackCooldown;
         [SerializeField] protected float _attackTriggerChance = 0.5f;
         [SerializeField] protected Collider2D _attackCollider;
+        [SerializeField] protected float _changeToDropCoins = 0.25f;
+        [SerializeField] protected GameObject _coinPrefab;
         
         [Header("Audio")]
         [SerializeField] protected AudioClipInfo[] _hitAudioClipInfos;
@@ -104,6 +106,10 @@ namespace MichiTheDev
                 _sfxAudioSource.PlayOneShot(_deathAudioClipInfo);
                 OnDeath?.Invoke(this);
                 GameManager.OnGameStateChanged -= GameStateChanged;
+                if (Random.Range(0f, 1f) <= _changeToDropCoins)
+                {
+                    Instantiate(_coinPrefab, transform.position, Quaternion.identity);
+                }
                 Destroy(gameObject);
                 return;
             }

@@ -41,6 +41,7 @@ namespace MichiTheDev
         {
             if (GameManager.Instance.FadeOut)
             {
+                _transitionAnim.gameObject.SetActive(true);
                 _transitionAnim.SetTrigger("FadeOut");
             }
             else
