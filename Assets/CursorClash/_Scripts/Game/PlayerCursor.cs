@@ -129,6 +129,7 @@ namespace MichiTheDev
          if(!_hitable) return;
 
          _health--;
+         ScoreManager.Instance.StopCombo();
          UpdateHealthDisplay();
 
          if(_health <= 0)

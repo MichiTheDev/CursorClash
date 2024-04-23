@@ -43,6 +43,12 @@ namespace MichiTheDev
             if(_scoreAnimator) _scoreAnimator.SetTrigger("AddScore");
         }
 
+        public void StopCombo()
+        {
+            _combo = 0;
+            _inCombo = false;
+        }
+        
         private void Update()
         {
             if(!_inCombo) return;
