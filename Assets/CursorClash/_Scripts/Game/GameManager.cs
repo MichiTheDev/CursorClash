@@ -74,8 +74,8 @@ namespace MichiTheDev
                Invoke("CollectAllCoins", 0.1f);
                break;
             case GameState.Playing:
-               _mainThemeSourceObject.StartFade(0f, 1.25f);
-               _gameThemeSourceObject.StartFade(_gameTheme.Volume, 1.25f);
+               _mainThemeSourceObject.StartFade(0f, 0.33f);
+               _gameThemeSourceObject.StartFade(_gameTheme.Volume, 0.33f);
                break;   
             case GameState.GameOver:
                _gameThemeSourceObject.StartFade(0f, 2f);
