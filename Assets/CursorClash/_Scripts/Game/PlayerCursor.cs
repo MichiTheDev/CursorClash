@@ -19,6 +19,7 @@ namespace MichiTheDev
       [SerializeField] private GameObject _healthDisplay;
       [SerializeField] private GameObject _heart;
       [SerializeField] private Sprite[] _heartSprites;
+      [SerializeField] private float _maxHitDistance = 3f;
       
       [Header("Audio")]
       [SerializeField] private AudioClipInfo _spawnClipInfo;
@@ -66,7 +67,7 @@ namespace MichiTheDev
          if(this == null) return;
          
          Animator animator = Instantiate(_comboPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Animator>();
-         animator.gameObject.GetComponent<TMP_Text>().text = $"Combo: {ScoreManager.Instance.Combo}";
+         animator.gameObject.GetComponent<TMP_Text>().text = $"Combo: {ScoreManager.Instance.Combo + 1}";
          animator.SetTrigger("Combo");
       }
 
@@ -231,10 +232,11 @@ namespace MichiTheDev
       private Enemy[] GetEnemyCollisions(Vector2 currentMousePosition, Vector2 previousMousePosition)
       {
          float castLength = Vector2.Distance(currentMousePosition, previousMousePosition);
+         if (castLength >= _maxHitDistance) castLength = _maxHitDistance;
          
          RaycastHit2D[] hits = Physics2D.CapsuleCastAll(
             currentMousePosition,
-            new Vector2(_hitRange, castLength),
+            new Vector2(castLength, _hitRange),
             CapsuleDirection2D.Vertical,
             0f, 
             (previousMousePosition - currentMousePosition).normalized,

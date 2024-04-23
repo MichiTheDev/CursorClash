@@ -53,6 +53,6 @@ MonoBehaviour:
   _gameTheme:
     AudioClip: {fileID: 8300000, guid: d822dd3570521424baca626c4a323069, type: 3}
     AudioMixerGroup: {fileID: -7833504671084778602, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
-    Volume: 0.25
+    Volume: 0.4
     Pitch: 1
     Loop: 1

@@ -68,10 +68,10 @@ namespace MichiTheDev
         public void OpenSettings()
         {
             if(_inAnimation) return;
-
-            StartCoroutine(TriggerSettingsAnimation("OpenSettings"));
+            
             _upgradeAnim.SetTrigger("Close");
             _baseAnim.SetTrigger("Close");
+            _anim.SetTrigger("OpenSettings");
             _inSettings = true;
             EnableSettings();
         }
@@ -82,7 +82,7 @@ namespace MichiTheDev
             
             _anim.SetTrigger("CloseSettings");
             _baseAnim.SetTrigger("Open");
-            StartCoroutine(TriggerUpgradeAnimation("Open"));
+            _upgradeAnim.SetTrigger("Open");
             _inSettings = false;
             DisableSettings();
         }
@@ -98,18 +98,6 @@ namespace MichiTheDev
                 _gameOverAnim.SetTrigger("Open");
                 _gameOverScoreText.text = $"{Mathf.RoundToInt(ScoreManager.Instance.Score).ToString("N0")}";
             }
-        }
-
-        private IEnumerator TriggerUpgradeAnimation(string parameter)
-        {
-            yield return new WaitForSeconds(0.75f);
-            _upgradeAnim.SetTrigger(parameter);
-        }
-
-        private IEnumerator TriggerSettingsAnimation(string parameter)
-        {
-            yield return new WaitForSeconds(0.25f);
-            _anim.SetTrigger(parameter);
         }
         
         public void EnableSettings()

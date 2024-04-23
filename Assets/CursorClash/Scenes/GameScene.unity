@@ -3182,6 +3182,10 @@ PrefabInstance:
       propertyPath: _healthDisplay
       value: 
       objectReference: {fileID: 1837976946}
+    - target: {fileID: 3514085603307008008, guid: 7f4136f861a626b4db4158b4a047d0f0, type: 3}
+      propertyPath: _maxHitDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4399349195035566866, guid: 7f4136f861a626b4db4158b4a047d0f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

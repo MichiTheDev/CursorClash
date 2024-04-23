@@ -36,7 +36,7 @@ namespace MichiTheDev
         {
             _inCombo = true;
             _comboTimer = _timeUntilComboRunsOut;
-            ++_combo;
+            _combo++;
 
             _score += _scorePerKill * (1 + _scoreMultiplierPerCombo * _combo);
             _scoreText.text = $"Score: {Mathf.RoundToInt(_score).ToString("N0")}";
