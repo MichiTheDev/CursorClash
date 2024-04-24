@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 90082818}
   - component: {fileID: 90082819}
   m_Layer: 0
-  m_Name: KillZone
+  m_Name: CoinKillZone
   m_TagString: KillZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,6 +422,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845fefbc3493cbf45bf52f15d0e0350b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coinClipInfo:
+    AudioClip: {fileID: 8300000, guid: 3b2549433a545f24faa725b6c3aebe15, type: 3}
+    AudioMixerGroup: {fileID: 1657487074520069764, guid: 5dfc17d4ce9282148a005a1be0af4064, type: 2}
+    Volume: 0.2
+    Pitch: 1
+    Loop: 0
 --- !u!224 &151833685 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5510392652749188602, guid: 2070a9c22c912eb4483c475e697ae759, type: 3}
@@ -2644,7 +2650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 72.6, y: -1004}
+  m_AnchoredPosition: {x: 72.6001, y: -1004}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1948730466
@@ -3225,6 +3231,10 @@ PrefabInstance:
     - target: {fileID: 4399349195035566866, guid: 7f4136f861a626b4db4158b4a047d0f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771964971164705908, guid: 7f4136f861a626b4db4158b4a047d0f0, type: 3}
+      propertyPath: m_Radius
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -134,7 +134,7 @@ namespace MichiTheDev
 
       public void TakeDamage()
       {
-         if(!_hitable) return;
+         if(!_hitable || _dead) return;
 
          _health--;
          ScoreManager.Instance.StopCombo();

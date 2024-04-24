@@ -110,6 +110,7 @@ namespace MichiTheDev
                 {
                     Instantiate(_coinPrefab, transform.position, Quaternion.identity);
                 }
+                Destroy(_sfxAudioSource.gameObject, 2f);
                 Destroy(gameObject);
                 return;
             }
@@ -129,7 +130,6 @@ namespace MichiTheDev
         {
             if(_gameOver) return;
             
-            _attackCollider.enabled = true;
             _hitable = false;
             StartCoroutine(AttackCooldown());
         }
