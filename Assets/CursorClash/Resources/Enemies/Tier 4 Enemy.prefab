@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3533120989715267381
+--- !u!1001 &4799933256777163389
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -50,47 +50,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2548107970086672504, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
       propertyPath: m_Name
-      value: Tier 2 Enemy
+      value: Tier 4 Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2809292371376120563, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2809292371376120563, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
       propertyPath: m_Color.b
-      value: 0.735849
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2809292371376120563, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
       propertyPath: m_Color.g
-      value: 0.38699052
+      value: 0.95214
       objectReference: {fileID: 0}
     - target: {fileID: 2809292371376120563, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
       propertyPath: m_Color.r
-      value: 0.2880918
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-      propertyPath: _health
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-      propertyPath: _attackCooldown
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-      propertyPath: _defaultColor.b
-      value: 0.5594026
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-      propertyPath: _defaultColor.g
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-      propertyPath: _defaultColor.r
-      value: 0.35294116
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-      propertyPath: _changeToDropCoins
-      value: 0.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-      propertyPath: _attackTriggerChance
-      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3971942304815888073, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
@@ -99,32 +75,37 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2548107970086672504, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 8902703635909607167}
+      addedObject: {fileID: -1914401574900134501}
   m_SourcePrefab: {fileID: 100100000, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
---- !u!1 &1320848132605470541 stripped
+--- !u!58 &5503945102167243660 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1080082387282729457, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
+  m_PrefabInstance: {fileID: 4799933256777163389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7043765535717390853 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2548107970086672504, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-  m_PrefabInstance: {fileID: 3533120989715267381}
+  m_PrefabInstance: {fileID: 4799933256777163389}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8902703635909607167
+--- !u!114 &-1914401574900134501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320848132605470541}
+  m_GameObject: {fileID: 7043765535717390853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186490b7b1a74cdeb3c3b65a1183371f, type: 3}
+  m_Script: {fileID: 11500000, guid: f72264081eef48fd89e7754c171d1a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 4
   _hitCooldown: 0.1
-  _srBody: {fileID: 1726205034156449222}
-  _defaultColor: {r: 0.2880918, g: 0.38699052, b: 0.735849, a: 1}
-  _attackCooldown: 4
-  _attackTriggerChance: 0.66
-  _attackCollider: {fileID: 5529417371888633009}
+  _srBody: {fileID: 7232874849308229774}
+  _defaultColor: {r: 1, g: 0.95214, b: 0, a: 1}
+  _attackCooldown: 0
+  _attackTriggerChance: 0.8
+  _attackCollider: {fileID: 5503945102167243660}
   _changeToDropCoins: 0
   _coinPrefab: {fileID: 4410360970985847071, guid: c936243a1d908d14bb9810cb6170f3b4, type: 3}
   _hitAudioClipInfos:
@@ -149,13 +130,10 @@ MonoBehaviour:
     Volume: 0.25
     Pitch: 0.75
     Loop: 0
---- !u!212 &1726205034156449222 stripped
+  _projectilePrefab: {fileID: 7928330435930664936, guid: 5fd1ab7bdcec0fe489f677fa9585373d, type: 3}
+  _projectileSpeed: 3
+--- !u!212 &7232874849308229774 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2809292371376120563, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-  m_PrefabInstance: {fileID: 3533120989715267381}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &5529417371888633009 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 9057940752650189700, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
-  m_PrefabInstance: {fileID: 3533120989715267381}
+  m_PrefabInstance: {fileID: 4799933256777163389}
   m_PrefabAsset: {fileID: 0}

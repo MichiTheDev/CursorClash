@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &90082816
 Transform:
   m_ObjectHideFlags: 0
@@ -881,7 +881,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: STATS COMING SOON!
+  m_text: STATS Aswell...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2fe69319032a934696ab94ce99a229e, type: 2}
   m_sharedMaterial: {fileID: 4396742458288260631, guid: d2fe69319032a934696ab94ce99a229e, type: 2}
@@ -2632,7 +2632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1948730465
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2903,9 +2903,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'UPGRADES COMING SOON!
+  m_text: 'Upgrades didn''t made it
 
-    (Upgrade with Coin)'
+    :('
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2fe69319032a934696ab94ce99a229e, type: 2}
   m_sharedMaterial: {fileID: 4396742458288260631, guid: d2fe69319032a934696ab94ce99a229e, type: 2}

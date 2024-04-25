@@ -43,8 +43,8 @@ namespace MichiTheDev
 
         public void AddCoins(int coins)
         {
-            _coins += coins;
-            _coinText.text = _coins.ToString("N0");
+            // _coins += coins;
+            // _coinText.text = _coins.ToString("N0");
         }
     }
 }

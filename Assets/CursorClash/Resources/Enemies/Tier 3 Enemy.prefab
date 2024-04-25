@@ -106,7 +106,7 @@ MonoBehaviour:
   _attackCooldown: 1.5
   _attackTriggerChance: 0.66
   _attackCollider: {fileID: 5503945102167243660}
-  _changeToDropCoins: 0.7
+  _changeToDropCoins: 0
   _coinPrefab: {fileID: 4410360970985847071, guid: c936243a1d908d14bb9810cb6170f3b4, type: 3}
   _hitAudioClipInfos:
   - AudioClip: {fileID: 8300000, guid: e591ac6e64d3bd547bc70a880da36197, type: 3}
@@ -131,7 +131,7 @@ MonoBehaviour:
     Pitch: 0.75
     Loop: 0
   _projectilePrefab: {fileID: 7928330435930664936, guid: 5fd1ab7bdcec0fe489f677fa9585373d, type: 3}
-  _projectileSpeed: 2.5
+  _projectileSpeed: 3
 --- !u!212 &7232874849308229774 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2809292371376120563, guid: ee7a62e774c3d7747b51d50aa1853841, type: 3}
